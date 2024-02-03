@@ -1,0 +1,15 @@
+syntax = "proto3";
+package decon.decon;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+
+option go_package = "decon/x/decon/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (amino.name) = "decon/x/decon/Params";
+  option (gogoproto.equal) = true;
+
+  
+}

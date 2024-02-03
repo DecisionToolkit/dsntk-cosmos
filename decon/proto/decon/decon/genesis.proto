@@ -1,0 +1,17 @@
+syntax = "proto3";
+package decon.decon;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "decon/decon/params.proto";
+
+option go_package = "decon/x/decon/types";
+
+// GenesisState defines the decon module's genesis state.
+message GenesisState {
+  // params defines all the parameters of the module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}
