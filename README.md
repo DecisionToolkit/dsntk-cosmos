@@ -8,6 +8,8 @@
 - The example is based on the work [DMN Decision Execution on the Ethereum Blockchain](https://link.springer.com/chapter/10.1007/978-3-319-91563-0_20) by Stephan Haarmann.
 - [Ignite CLI](https://docs.ignite.com/) is used to create and run the Cosmos Blockchain.
 - Clone this repository locally, to be able to experiment with prepared examples.
+- Install the newest stable version of Rust.
+- Install the newest version of Go.
 
 ### Install DSNTK
 
@@ -564,7 +566,11 @@ To test this application, run:
 ```shell
 $ cd client
 $ go run dsntk/client
+SLA = 2
+Fine = 5%
 ```
+> NOTE: the DSNTK server must be running with deployed decision module, but this is obvious ;-)
+
 
 ## Phase 2 - ?
 (tbd)
