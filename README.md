@@ -10,6 +10,7 @@
 - Clone this repository locally, to be able to experiment with prepared examples.
 - Install the newest stable version of Rust.
 - Install the newest version of Go.
+- Install the newest Ignite CLI.
 
 ### Install DSNTK
 
@@ -576,8 +577,23 @@ NOTE: The DSNTK server must be running with decision model deployed, but this is
 
 ### Create example blockchain named `decon`
 
+Check ignite version:
+
 ```shell
-$ 
+$ ignite ignite version
+Ignite CLI version:             v28.1.1
+Cosmos SDK version:             v0.50.3
+Your OS:                        linux
+Your arch:                      amd64
+Your Node.js version:           v20.10.0
+Your go version:                go version go1.21.6 linux/amd64
+Is on Gitpod:                   false 
+```
+
+Create a chain:
+
+```shell
+$ ignite scaffold chain decon
 ```
 
 ## Phase 2 - ?
