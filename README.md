@@ -463,6 +463,9 @@ NOW WE HAVE THE DMN DECISION MODEL UP AN RUNNING, THIS MODEL CAN BE EVALUATED BY
 - http://0.0.0.0:22022/evaluate/io/dsntk/DecisionContract/SLA
 - http://0.0.0.0:22022/evaluate/io/dsntk/DecisionContract/Fine
 
+### Create Go client to invoke decision model
+
+
 
 ## Phase 2 - ?
 (tbd)
