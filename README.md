@@ -559,6 +559,13 @@ func main() {
 }
 ```
 
+To test this application, run:
+
+```shell
+$ cd client
+$ go run dsntk/client
+```
+
 ## Phase 2 - ?
 (tbd)
 
