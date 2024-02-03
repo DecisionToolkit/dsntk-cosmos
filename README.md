@@ -131,10 +131,9 @@ This logic must be combined in a decision model, specifying requirements and dep
 
 ![mancus.png](mancus.png)
 
-This decision model is identical with the one in Haarmann's work.
-
-This model, to be evaluated, must be first prepared in XML format, compliant with DMN specification.
-The file [mancus.dmn](mancus.dmn) contains such a model. The content is presented below.
+Decision model is identical to the one presented in Haarmann's work.
+Every decision model, to be evaluated, must be prepared in XML format, compliant with DMN specification.
+The file [mancus.dmn](mancus.dmn) contains such a model. The content of this file is presented below.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -405,6 +404,65 @@ The file [mancus.dmn](mancus.dmn) contains such a model. The content is presente
     </dmndi:DMNDI>
 </definitions>
 ```
+
+### Execute the decision model
+
+To execute the decision model using DSNTK, run:
+
+```shell
+$ dsntk srv -v
+Found 1 model.
+Loaded 1 model.
+Deployed 2 invocables.
+
+Deployed invocables:
+  io/dsntk/DecisionContract/Fine
+  io/dsntk/DecisionContract/SLA
+
+dsntk 0.0.0.0:22022
+```
+
+DSNTK, run with command `srv` searches for DMN models in current directory. While there is exactly one in file
+[mancus.dmn](mancus.dmn), DSNTK loads the model and deploys invocables (decision tables in our case) and prepares
+JSON API endpoints to evaluate those invocables.
+
+To test `SLA` decision, open another terminal and run:
+
+```shell
+$ curl -s \
+       -d "{ YearsAsCustomer: 1, NumberOfUnits: 1000 }" \
+       -H "Content-Type: application/json" \
+       -X POST http://0.0.0.0:22022/evaluate/io/dsntk/DecisionContract/SLA
+{"data":2}
+```
+The result `SLA` is **2**.
+
+To test `Fine` decision, run:
+
+```shell
+$ curl -s \
+       -d "{ YearsAsCustomer: 1, NumberOfUnits: 1000, DefectiveUnits: 0.034 }" \
+       -H "Content-Type: application/json" \
+       -X POST http://0.0.0.0:22022/evaluate/io/dsntk/DecisionContract/Fine
+{"data":0.05}       
+```
+The result `Fine` is 0.05 that is **5%**.
+
+To run both tests shown above:
+
+```shell
+$ chmod +x mancus.sh
+$ ./mancus.sh
+Calculating SLA:
+{"data":2}
+Calculating fine:
+{"data":0.05}
+```
+
+NOW WE HAVE THE DMN DECISION MODEL UP AN RUNNING, THIS MODEL CAN BE EVALUATED BY EXECUTING TWO JSON API ENDPOINTS:
+- http://0.0.0.0:22022/evaluate/io/dsntk/DecisionContract/SLA
+- http://0.0.0.0:22022/evaluate/io/dsntk/DecisionContract/Fine
+
 
 ## Phase 2 - ?
 (tbd)
