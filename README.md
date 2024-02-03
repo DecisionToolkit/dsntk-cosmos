@@ -461,11 +461,11 @@ Calculating fine:
 {"data":0.05}
 ```
 
-NOW WE HAVE THE DMN DECISION MODEL UP AN RUNNING, THIS MODEL CAN BE EVALUATED BY EXECUTING TWO JSON API ENDPOINTS:
-- http://0.0.0.0:22022/evaluate/io/dsntk/DecisionContract/SLA
-- http://0.0.0.0:22022/evaluate/io/dsntk/DecisionContract/Fine
+> Now we have the DMN decision model up and running. This model can be evaluated by executing two JSON API endpoints using `curl`:
+> - http://0.0.0.0:22022/evaluate/io/dsntk/DecisionContract/SLA
+> - http://0.0.0.0:22022/evaluate/io/dsntk/DecisionContract/Fine
 
-### Create Go client to invoke decision model
+### Create Go client to invoke the decision model
 
 The example Go application that evaluates decision model is prepared in file [client/main.go](client/main.go).
 The source is presented below:
@@ -569,8 +569,16 @@ $ go run dsntk/client
 SLA = 2
 Fine = 5%
 ```
-> NOTE: the DSNTK server must be running with deployed decision module, but this is obvious ;-)
+NOTE: The DSNTK server must be running with decision model deployed, but this is obvious ;-)
 
+> Now we have the DMN decision model up and running. this model can be executed from Go application.
+> We will use this Go code to implement query in Cosmos blockchain.
+
+### Create example blockchain named `decon`
+
+```shell
+$ 
+```
 
 ## Phase 2 - ?
 (tbd)
