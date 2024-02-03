@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-const Uri = "http://0.0.0.0:22022/evaluate/io/decisioncontracts/DecisionContract/"
+const Uri = "http://0.0.0.0:22022/evaluate/io/dsntk/DecisionContract/"
 const SlaUri = Uri + "SLA"
 const FineUri = Uri + "Fine"
 const ContentType = "application/json"
