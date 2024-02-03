@@ -19,5 +19,6 @@ func (k Keeper) Fine(goCtx context.Context, req *types.QueryFineRequest) (*types
 	// TODO: Process the query
 	_ = ctx
 
-	return &types.QueryFineResponse{}, nil
+	fine := queryFine(req.YearsAsCustomer, req.NumberOfUnits, req.DefectiveUnits)
+	return &types.QueryFineResponse{Fine: fine}, nil
 }

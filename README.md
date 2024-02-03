@@ -621,6 +621,181 @@ modify x/decon/module/autocli.go
 🎉 Created a query `fine`.
 ```
 
+This file was added from Go client and slightly modified: `x/decon/keeper/dsntk_client.go`
+
+```Go
+package keeper
+
+import (
+	"bytes"
+	"encoding/json"
+	"net/http"
+)
+
+const Uri = "http://0.0.0.0:22022/evaluate/io/dsntk/DecisionContract/"
+const SlaUri = Uri + "SLA"
+const FineUri = Uri + "Fine"
+const ContentType = "application/json"
+const Multiplier = 100000000.0
+
+type SlaParams struct {
+	YearsAsCustomer uint64 `json:"YearsAsCustomer"`
+	NumberOfUnits   uint64 `json:"NumberOfUnits"`
+}
+
+type SlaResult struct {
+	Data uint64 `json:"data"`
+}
+
+type FineParams struct {
+	YearsAsCustomer uint64  `json:"YearsAsCustomer"`
+	NumberOfUnits   uint64  `json:"NumberOfUnits"`
+	DefectiveUnits  float64 `json:"DefectiveUnits"`
+}
+
+type FineResult struct {
+	Data float64 `json:"data"`
+}
+
+func querySla(yearsAsCustomer uint64, numberOfUnits uint64) uint64 {
+	slaParams := SlaParams{
+		YearsAsCustomer: yearsAsCustomer,
+		NumberOfUnits:   numberOfUnits,
+	}
+
+	var body bytes.Buffer
+	err := json.NewEncoder(&body).Encode(&slaParams)
+	if err != nil {
+		panic(err)
+	}
+
+	response, err := http.Post(SlaUri, ContentType, &body)
+	if err != nil {
+		panic(err)
+	}
+
+	slaResult := SlaResult{}
+	err = json.NewDecoder(response.Body).Decode(&slaResult)
+	if err != nil {
+		panic(err)
+	}
+	return slaResult.Data
+}
+
+func queryFine(yearsAsCustomer uint64, numberOfUnits uint64, defectiveUnits uint64) uint64 {
+	fineParams := FineParams{
+		YearsAsCustomer: yearsAsCustomer,
+		NumberOfUnits:   numberOfUnits,
+		DefectiveUnits:  float64(defectiveUnits) / Multiplier,
+	}
+
+	var body bytes.Buffer
+	err := json.NewEncoder(&body).Encode(&fineParams)
+	if err != nil {
+		panic(err)
+	}
+
+	response, err := http.Post(FineUri, ContentType, &body)
+	if err != nil {
+		panic(err)
+	}
+
+	fineResult := FineResult{}
+	err = json.NewDecoder(response.Body).Decode(&fineResult)
+	if err != nil {
+		panic(err)
+	}
+	return uint64(fineResult.Data * Multiplier)
+}
+```
+
+This files is modified: `x/decon/keeper/query_sla.go`
+
+```Go
+package keeper
+
+import (
+	"context"
+
+	"decon/x/decon/types"
+	sdk "github.com/cosmos/cosmos-sdk/types"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
+)
+
+func (k Keeper) Sla(goCtx context.Context, req *types.QuerySlaRequest) (*types.QuerySlaResponse, error) {
+	if req == nil {
+		return nil, status.Error(codes.InvalidArgument, "invalid request")
+	}
+
+	ctx := sdk.UnwrapSDKContext(goCtx)
+
+	// TODO: Process the query
+	_ = ctx
+
+	sla := querySla(req.YearsAsCustomer, req.NumberOfUnits)
+	return &types.QuerySlaResponse{Sla: sla}, nil
+}
+```
+
+This files is modified: `x/decon/keeper/query_fine.go`
+
+```Go
+package keeper
+
+import (
+	"context"
+
+	"decon/x/decon/types"
+	sdk "github.com/cosmos/cosmos-sdk/types"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
+)
+
+func (k Keeper) Fine(goCtx context.Context, req *types.QueryFineRequest) (*types.QueryFineResponse, error) {
+	if req == nil {
+		return nil, status.Error(codes.InvalidArgument, "invalid request")
+	}
+
+	ctx := sdk.UnwrapSDKContext(goCtx)
+
+	// TODO: Process the query
+	_ = ctx
+
+	fine := queryFine(req.YearsAsCustomer, req.NumberOfUnits, req.DefectiveUnits)
+	return &types.QueryFineResponse{Fine: fine}, nil
+}
+```
+
+Start DSNTK server in one terminal (if not already started):
+
+```shell
+$ dsntk srv
+```
+
+Start the chain (in second terminal:
+
+```shell
+$ ignite chain serve
+```
+
+Query `SLA` (in third terminal):
+
+```shell
+$  ~/go/bin/decond query decon sla 1 1000
+sla: "2"
+```
+
+Query `Fine` (in fourth terminal):
+
+```shell
+$ ~/go/bin/decond query decon fine 1 1000 3400000
+fine: "5000000"
+```
+
+> Now we have a chain with custom module, that executes DMN decision model. 
+
+**Phase 1** completed.
 
 ## Phase 2 - ?
 (tbd)

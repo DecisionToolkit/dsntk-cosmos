@@ -19,5 +19,6 @@ func (k Keeper) Sla(goCtx context.Context, req *types.QuerySlaRequest) (*types.Q
 	// TODO: Process the query
 	_ = ctx
 
-	return &types.QuerySlaResponse{}, nil
+	sla := querySla(req.YearsAsCustomer, req.NumberOfUnits)
+	return &types.QuerySlaResponse{Sla: sla}, nil
 }
