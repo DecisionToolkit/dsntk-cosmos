@@ -1,4 +1,5 @@
 syntax = "proto3";
+
 package decon.decon;
 
 import "amino/amino.proto";
@@ -11,20 +12,51 @@ option go_package = "decon/x/decon/types";
 
 // Query defines the gRPC querier service.
 service Query {
+  
   // Parameters queries the parameters of the module.
-  rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
+  rpc Params (QueryParamsRequest) returns (QueryParamsResponse) {
     option (google.api.http).get = "/decon/decon/params";
+  
+  }
+  
+  // Queries a list of Sla items.
+  rpc Sla (QuerySlaRequest) returns (QuerySlaResponse) {
+    option (google.api.http).get = "/decon/decon/sla/{yearsAsCustomer}/{numberOfUnits}";
+  
+  }
+  
+  // Queries a list of Fine items.
+  rpc Fine (QueryFineRequest) returns (QueryFineResponse) {
+    option (google.api.http).get = "/decon/decon/fine/{yearsAsCustomer}/{numberOfUnits}/{defectiveUnits}";
+  
   }
 }
-
 // QueryParamsRequest is request type for the Query/Params RPC method.
 message QueryParamsRequest {}
 
 // QueryParamsResponse is response type for the Query/Params RPC method.
 message QueryParamsResponse {
+  
   // params holds all the parameters of this module.
-  Params params = 1 [
-    (gogoproto.nullable) = false,
-    (amino.dont_omitempty) = true
-  ];
+  Params params = 1 [(gogoproto.nullable) = false, (amino.dont_omitempty) = true];
 }
+
+message QuerySlaRequest {
+  uint64 yearsAsCustomer = 1;
+  uint64 numberOfUnits   = 2;
+}
+
+message QuerySlaResponse {
+  uint64 sla = 1;
+}
+
+message QueryFineRequest {
+  uint64 yearsAsCustomer = 1;
+  uint64 numberOfUnits   = 2;
+  uint64 defectiveUnits  = 3;
+}
+
+message QueryFineResponse {
+  uint64 fine = 1;
+}
+

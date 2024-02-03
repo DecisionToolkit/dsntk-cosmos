@@ -590,11 +590,37 @@ Your go version:                go version go1.21.6 linux/amd64
 Is on Gitpod:                   false 
 ```
 
-Create a chain:
+Create a chain named `decon` with custom module named `decon`:
 
 ```shell
 $ ignite scaffold chain decon
 ```
+
+Create a custom query named `sla`:
+
+```shell
+$ cd decon
+$ ignite scaffold query sla yearsAsCustomer:uint numberOfUnits:uint --response sla:uint
+
+modify proto/decon/decon/query.proto
+create x/decon/keeper/query_sla.go
+modify x/decon/module/autocli.go
+
+🎉 Created a query `sla`.
+```
+
+Create a custom query named `fine`:
+
+```shell
+$ ignite scaffold query fine yearsAsCustomer:uint numberOfUnits:uint defectiveUnits:uint --response fine:uint
+
+modify proto/decon/decon/query.proto
+create x/decon/keeper/query_fine.go
+modify x/decon/module/autocli.go
+
+🎉 Created a query `fine`.
+```
+
 
 ## Phase 2 - ?
 (tbd)

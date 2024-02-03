@@ -17,6 +17,20 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 					Use:       "params",
 					Short:     "Shows the parameters of the module",
 				},
+				{
+					RpcMethod:      "Sla",
+					Use:            "sla [years-as-customer] [number-of-units]",
+					Short:          "Query sla",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "yearsAsCustomer"}, {ProtoField: "numberOfUnits"}},
+				},
+
+				{
+					RpcMethod:      "Fine",
+					Use:            "fine [years-as-customer] [number-of-units] [defective-units]",
+					Short:          "Query fine",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "yearsAsCustomer"}, {ProtoField: "numberOfUnits"}, {ProtoField: "defectiveUnits"}},
+				},
+
 				// this line is used by ignite scaffolding # autocli/query
 			},
 		},
