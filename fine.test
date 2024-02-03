@@ -1,0 +1,12 @@
+% { DefectiveUnits: -0.01,   SLA: 1 }, null
+% { DefectiveUnits:  1.01,   SLA: 1 }, null
+% { DefectiveUnits:  0.01,   SLA: 3 }, null
+% { DefectiveUnits:  0.02,   SLA: 1 }, 0.0
+% { DefectiveUnits:  0.05,   SLA: 1 }, 0.02
+% { DefectiveUnits:  0.075,  SLA: 1 }, 0.02
+% { DefectiveUnits:  0.1,    SLA: 1 }, 0.02
+% { DefectiveUnits:  0.11,   SLA: 1 }, 1.0
+% { DefectiveUnits:  0.009,  SLA: 2 }, 0.0
+% { DefectiveUnits:  0.01,   SLA: 2 }, 0.05
+% { DefectiveUnits:  0.05,   SLA: 2 }, 0.05
+% { DefectiveUnits:  0.051,  SLA: 2 }, 1.05
