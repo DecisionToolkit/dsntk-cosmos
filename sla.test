@@ -1,0 +1,11 @@
+% { YearsAsCustomer: -1,   NumberOfUnits:  999 }, null
+% { YearsAsCustomer:  1,   NumberOfUnits:   -1 }, null
+% { YearsAsCustomer: -1,   NumberOfUnits:   -1 }, null
+% { YearsAsCustomer:  0,   NumberOfUnits:    0 }, 1
+% { YearsAsCustomer:  0,   NumberOfUnits:  999 }, 1
+% { YearsAsCustomer:  1,   NumberOfUnits:  999 }, 1
+% { YearsAsCustomer:  1,   NumberOfUnits: 1000 }, 2
+% { YearsAsCustomer:  2,   NumberOfUnits:  499 }, 1
+% { YearsAsCustomer:  3,   NumberOfUnits:  499 }, 1
+% { YearsAsCustomer:  2,   NumberOfUnits:  500 }, 2
+% { YearsAsCustomer:  3,   NumberOfUnits:  500 }, 2
