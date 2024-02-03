@@ -22,7 +22,7 @@ Try 'dsntk --help' for more information.
 ### Create decision table for SLA
 
 The decision table for calculating SLA is presented below. The source is saved in file [sla.dtb](sla.dtb). 
-This table is identical like the one presented in Haarmann's work.
+This decision table is identical as one presented in Haarmann's work.
 
 ```text
  ┌───────┐
