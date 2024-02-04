@@ -16,11 +16,11 @@
 
 ```shell
 $ cargo install dsntk
-$ dsntk
-dsntk 0.0.3
-DSNTK | Decision Toolkit
-dsntk: missing subcommand
-Try 'dsntk --help' for more information.
+```
+
+```shell
+$ dsntk --version
+dsntk 0.0.4
 ```
 
 ### Create decision table for `SLA`
