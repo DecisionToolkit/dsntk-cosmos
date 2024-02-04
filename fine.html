@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title> Fine  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
+  <style>
+    @media print {
+      body {
+        font-size: 10pt;
+        margin: 0;
+      }
+      svg {
+        border: unset;
+        width: 100%;
+      }
+      .diagram-section {
+        grid-template-columns: 0 auto 0;
+      }
+    }
+    body {
+      background-color: white;
+      color: black;
+      font-family: "Barlow", sans-serif;
+      font-size: 16pt;
+      font-weight: 300;
+    }
+    section {
+      display: block;
+    }
+    svg {
+      border: 1px solid #DBDBDB;
+      color: black;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 20px;
+      font-weight: 400;
+      overflow: hidden;
+      user-select: none;
+      fill: white;
+      stroke: black;
+      stroke-width: 1;
+    }
+    h1 {
+      background-color: #002F56;
+      color: white;
+      font-size: 1.4em;
+      font-weight: 600;
+      margin: 0 0 8px 0;
+      padding: 8px 20px;
+      text-align: left;
+    }
+    h2 {
+      background-color: #D8ECFF;
+      font-size: 1.2em;
+      font-weight: 600;
+      margin: 0;
+      padding: 8px 20px;
+      text-align: left;
+    }
+    h3 {
+      background-color: white;
+      font-size: 1.2em;
+      font-weight: 400;
+      margin: 0;
+      padding: 12px 20px 4px 20px;
+      text-align: center;
+    }
+    strong {
+      font-weight: 600;
+    }
+    .decision-table {
+      align-content: flex-start;
+      break-inside: avoid;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      font-weight: 300;
+    }
+    .decision-table .information-item-name {
+      align-self: flex-start;
+      background-color: #EFEFEF;
+      border: 2px solid #727272;
+      font-weight: 500;
+      padding: 2px 4px;
+      position: relative;
+      top: 2px;
+    }
+    .decision-table .grid-container {
+      display: flex;
+      flex-direction: row;
+    }
+    .decision-table .grid-body {
+      background-color: #727272;
+      border: 2px solid #727272;
+      color: #404040;
+      display: grid;
+      grid-gap: 2px;
+    }
+    .decision-table .vertical-double-line {
+      background-color: white;
+      width: 2px;
+    }
+    .decision-table .horizontal-double-line {
+      background-color: white;
+      height: 2px;
+    }
+    .decision-table .hit-policy {
+      background-color: #FFB25B;
+      color: white;
+      display: flex;
+      font-weight: 500;
+      justify-content: center;
+      padding: 4px 4px;
+      text-align: center;
+    }
+    .decision-table .rule-number {
+      align-items: center;
+      background-color: #FF6300;
+      color: white;
+      display: flex;
+      font-weight: 500;
+      justify-content: center;
+      padding: 4px 4px;
+      text-align: center;
+    }
+    .decision-table .input-expression {
+      align-items: center;
+      background-color: #96C1E3;
+      color: black;
+      display: flex;
+      font-weight: 500;
+      justify-content: center;
+      padding: 4px 4px;
+      text-align: center;
+    }
+    .decision-table .input-allowed-values {
+      align-items: center;
+      background-color: #9A9A9A;
+      color: white;
+      display: flex;
+      font-weight: 400;
+      justify-content: center;
+      padding: 4px 4px;
+      text-align: center;
+    }
+    .decision-table .input-entry {
+      align-items: center;
+      background-color: #FAFAFA;
+      color: black;
+      display: flex;
+      font-weight: 500;
+      justify-content: center;
+      padding: 4px 4px;
+      text-align: center;
+    }
+    .decision-table .output-label {
+      align-items: center;
+      background-color: #E8B4D1;
+      color: black;
+      display: flex;
+      font-weight: 500;
+      justify-content: center;
+      padding: 4px 4px;
+      text-align: center;
+    }
+    .decision-table .output-component {
+      align-items: center;
+      background-color: #FADBEB;
+      color: black;
+      display: flex;
+      font-weight: 500;
+      justify-content: center;
+      padding: 4px 4px;
+      text-align: center;
+    }
+    .decision-table .output-allowed-values {
+      align-items: center;
+      background-color: #9A9A9A;
+      color: white;
+      display: flex;
+      font-weight: 400;
+      justify-content: center;
+      padding: 4px 4px;
+      text-align: center;
+    }
+    .decision-table .output-entry {
+      align-items: center;
+      background-color: #FAFAFA;
+      color: black;
+      display: flex;
+      font-weight: 500;
+      justify-content: center;
+      padding: 4px 4px;
+      text-align: center;
+    }
+    .decision-table .annotation-label {
+      align-items: center;
+      background-color: #C1D9C0;
+      color: black;
+      display: flex;
+      font-weight: 500;
+      justify-content: center;
+      padding: 4px 4px;
+      text-align: center;
+    }
+    .decision-table .annotation-allowed-values {
+      align-items: center;
+      background-color: #9A9A9A;
+      color: white;
+      display: flex;
+      font-weight: 400;
+      justify-content: center;
+      padding: 4px 4px;
+      text-align: center;
+    }
+    .decision-table .annotation-entry {
+      align-items: center;
+      background-color: #FAFAFA;
+      color: black;
+      display: flex;
+      font-weight: 500;
+      justify-content: center;
+      padding: 4px 4px;
+      text-align: center;
+    }
+    @media print {
+      .decision-table .grid-body {
+        border: 1px solid #727272;
+        grid-gap: 1px;
+      }
+      .decision-table .horizontal-double-line {
+        height: 1px;
+      }
+      .decision-table .information-item-name {
+        border: 1px solid #727272;
+        top: 1px;
+      }
+      .decision-table .vertical-double-line {
+        width: 1px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1> Fine  </h1>
+  <div class="decision-table">
+    <div class="information-item-name"> Fine  </div>
+    <div class="grid-container">
+      <div class="grid-body" style="grid-template-columns: auto auto auto auto auto;">
+        <div class="horizontal-double-line" style="grid-column: 1 / span 5; grid-row: 3 / span 1;"></div>
+        <div class="vertical-double-line" style="grid-column: 4 / span 1; grid-row: 1 / span 9;"></div>
+        <div class="hit-policy" style="grid-row: span 2;">U</div>
+        <div class="input-expression" style="grid-row: span 1;">DefectiveUnits</div>
+        <div class="input-expression" style="grid-row: span 1;">SLA</div>
+        <div class="output-label">Fine</div>
+        <div class="input-allowed-values">[0.00..1.00]</div>
+        <div class="input-allowed-values">1,2</div>
+        <div class="output-allowed-values">&nbsp;</div>
+        <div class="rule-number">1</div>
+        <div class="input-entry">< 0.05</div>
+        <div class="input-entry">1</div>
+        <div class="output-entry">0.00</div>
+        <div class="rule-number">2</div>
+        <div class="input-entry">[0.05..0.10]</div>
+        <div class="input-entry">1</div>
+        <div class="output-entry">0.02</div>
+        <div class="rule-number">3</div>
+        <div class="input-entry">> 0.10</div>
+        <div class="input-entry">1</div>
+        <div class="output-entry">1.00</div>
+        <div class="rule-number">4</div>
+        <div class="input-entry">< 0.01</div>
+        <div class="input-entry">2</div>
+        <div class="output-entry">0.00</div>
+        <div class="rule-number">5</div>
+        <div class="input-entry">[0.01..0.05]</div>
+        <div class="input-entry">2</div>
+        <div class="output-entry">0.05</div>
+        <div class="rule-number">6</div>
+        <div class="input-entry">> 0.05</div>
+        <div class="input-entry">2</div>
+        <div class="output-entry">1.05</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
