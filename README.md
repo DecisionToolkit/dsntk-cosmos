@@ -1,8 +1,10 @@
-# DMN decision execution on the Cosmos blockchain
+# DMN Decision Execution on the Cosmos Blockchain
 
-## Phase 1 - DMN model executed as a query
+## Introduction
 
-### Prerequisites
+
+
+## Prerequisites
 
 - In this PoC, the [dsntk](https://github.com/dsntk) engine is used as a DMN runtime.
 - The example is based on the work [DMN Decision Execution on the Ethereum Blockchain](https://link.springer.com/chapter/10.1007/978-3-319-91563-0_20) by Stephan Haarmann.
@@ -795,16 +797,6 @@ fine: "5000000"
 
 > Now we have a chain with custom module, that executes DMN decision model. 
 
-**Phase 1** completed.
+## References
 
-## Phase 2 - ?
-(tbd)
-
-## Phase 3 - ?
-(tbd)
-
-## Phase 4 - ?
-(tbd)
-
-## Phase 5 - ?
-(tbd)
+- [DMN Decision Execution on the Ethereum Blockchain](https://www.researchgate.net/publication/325174084_DMN_Decision_Execution_on_the_Ethereum_Blockchain)
