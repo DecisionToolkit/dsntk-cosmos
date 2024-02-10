@@ -4,8 +4,8 @@
 
 - Install the newest stable version of [Rust](https://www.rust-lang.org/tools/install).
 - Install the newest version of [Go](https://go.dev/doc/install).
-- Install the newest [Ignite CLI](https://docs.ignite.com/welcome/install).
-- Clone this repository locally, to to experiment with prepared examples.
+- Install the newest version of [Ignite CLI](https://docs.ignite.com/welcome/install).
+- Clone this repository locally, to experiment with presented examples.
 
 ### Install DSNTK
 
