@@ -1,5 +1,7 @@
 # DMN Decision Execution on the Cosmos Blockchain
 
+Source code for [this article](https://depta.medium.com/dmn-decision-execution-on-the-cosmos-blockchain-0d8c76c29e67) published on Medium.
+
 ## Prerequisites
 
 - Install the newest stable version of [Rust](https://www.rust-lang.org/tools/install).
