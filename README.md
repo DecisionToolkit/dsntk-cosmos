@@ -1,18 +1,11 @@
 # DMN Decision Execution on the Cosmos Blockchain
 
-## Introduction
-
-
-
 ## Prerequisites
 
-- In this PoC, the [dsntk](https://github.com/dsntk) engine is used as a DMN runtime.
-- The example is based on the work [DMN Decision Execution on the Ethereum Blockchain](https://link.springer.com/chapter/10.1007/978-3-319-91563-0_20) by Stephan Haarmann.
-- [Ignite CLI](https://docs.ignite.com/) is used to create and run the Cosmos Blockchain.
-- Clone this repository locally, to be able to experiment with prepared examples.
-- Install the newest stable version of Rust.
-- Install the newest version of Go.
-- Install the newest Ignite CLI.
+- Install the newest stable version of [Rust](https://www.rust-lang.org/tools/install).
+- Install the newest version of [Go](https://go.dev/doc/install).
+- Install the newest [Ignite CLI](https://docs.ignite.com/welcome/install).
+- Clone this repository locally, to to experiment with prepared examples.
 
 ### Install DSNTK
 
@@ -25,10 +18,10 @@ $ dsntk --version
 dsntk 0.0.4
 ```
 
-### Create decision table for `SLA`
+### Create a decision table for `SLA`
 
 The decision table for calculating `SLA` is presented below. The source is saved in file [sla.dtb](sla.dtb).
-This decision table is identical to the one presented in Haarmann's work.
+This decision table is identical to the one presented in [Haarmann's work](https://www.researchgate.net/publication/325174084_DMN_Decision_Execution_on_the_Ethereum_Blockchain).
 
 ```text
  ┌───────┐
@@ -78,7 +71,7 @@ test result: ok. 11 passed; 0 failed.
 ### Create decision table for `Fine`
 
 The decision table for calculating `Fine` is presented below. The source is saved in file [fine.dtb](fine.dtb).
-This decision table is identical to the one presented in Haarmann's work.
+This decision table is identical to the one presented in [Haarmann's work](https://www.researchgate.net/publication/325174084_DMN_Decision_Execution_on_the_Ethereum_Blockchain).
 
 ```text
  ┌───────┐
@@ -131,12 +124,12 @@ test result: ok. 12 passed; 0 failed.
 
 ### Create decision model for calculating `SLA` and `Fine`
 
-Decision tables presented above contain properly working decision logic as described in Haarmann's work.
+Decision tables presented above contain properly working decision logic as described in [Haarmann's work](https://www.researchgate.net/publication/325174084_DMN_Decision_Execution_on_the_Ethereum_Blockchain).
 This logic must be combined in a decision model, specifying requirements and dependencies as depicted below:
 
 ![mancus.png](mancus.png)
 
-Decision model is identical to the one presented in Haarmann's work.
+Decision model is identical to the one presented in [Haarmann's work](https://www.researchgate.net/publication/325174084_DMN_Decision_Execution_on_the_Ethereum_Blockchain).
 Every decision model, to be evaluated, must be prepared in XML format, compliant with DMN specification.
 The file [mancus.dmn](mancus.dmn) contains such a model. The content of this file is presented below.
 
