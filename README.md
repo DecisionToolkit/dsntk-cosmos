@@ -706,7 +706,7 @@ func queryFine(yearsAsCustomer uint64, numberOfUnits uint64, defectiveUnits uint
 }
 ```
 
-This files is modified: `x/decon/keeper/query_sla.go`
+This file is modified: `x/decon/keeper/query_sla.go`
 
 ```Go
 package keeper
@@ -735,7 +735,7 @@ func (k Keeper) Sla(goCtx context.Context, req *types.QuerySlaRequest) (*types.Q
 }
 ```
 
-This files is modified: `x/decon/keeper/query_fine.go`
+This file is modified: `x/decon/keeper/query_fine.go`
 
 ```Go
 package keeper
